@@ -30,4 +30,9 @@ class Lelang extends Model
     {
         return $this->hasMany(HistoryLelang::class, 'id_lelang')->orderBy('penawaran_harga', 'desc');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

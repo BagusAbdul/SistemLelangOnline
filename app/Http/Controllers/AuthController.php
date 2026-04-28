@@ -22,9 +22,19 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            // Nanti kita buat dashboard per role
-            return redirect()->intended('/dashboard');
+            if (Auth::user()->role_id == 1) {
+            return redirect()->route('DashboardAdmin');
+            }
+
+             if (Auth::user()->role_id == 2) {
+            return redirect()->route('DashboardPetugas');
+            }
+
+            if (Auth::user()->role_id == 3) {
+            return redirect()->route('katalog');
+            }
         }
+
 
         return back()->withErrors(['username' => 'Username atau password salah.']);
     }
@@ -59,8 +69,11 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+
+        // Ubah dari redirect('/login') menjadi redirect ke route landing
+        return redirect()->route('landing')->with('success', 'Anda telah berhasil keluar.');
     }
 }
