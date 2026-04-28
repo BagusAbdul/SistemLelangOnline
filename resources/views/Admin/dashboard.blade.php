@@ -8,6 +8,7 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+    @if(Auth::user()->role_id == 1)
     @php
         $cards = [
             ['label' => 'Total Barang', 'value' => $stats['total_barang'], 'icon' => 'package', 'color' => 'blue'],
@@ -26,6 +27,39 @@
         <p class="text-2xl font-black text-slate-800 mt-1">{{ $c['value'] }}</p>
     </div>
     @endforeach
+    @elseif (Auth::user()->role_id == 2)
+    <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4">
+                <i data-lucide="gavel" class="w-6 h-6"></i>
+            </div>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Lelang Saya</p>
+            <p class="text-2xl font-black text-slate-800 mt-1">{{ $stats['lelang_saya'] }}</p>
+        </div>
+
+        <div class="bg-orange-500 p-6 rounded-[2rem] shadow-lg shadow-orange-200 text-white">
+            <div class="w-12 h-12 bg-white/20 text-white rounded-2xl flex items-center justify-center mb-4">
+                <i data-lucide="clock" class="w-6 h-6"></i>
+            </div>
+            <p class="text-[10px] font-bold text-orange-100 uppercase tracking-widest">Sedang Dibuka</p>
+            <p class="text-2xl font-black mt-1">{{ $stats['perlu_ditutup'] }}</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100">
+            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-4">
+                <i data-lucide="package" class="w-6 h-6"></i>
+            </div>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total Barang</p>
+            <p class="text-2xl font-black text-slate-800 mt-1">{{ $stats['total_barang'] }}</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100">
+            <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-4">
+                <i data-lucide="check-circle" class="w-6 h-6"></i>
+            </div>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Berhasil Terjual</p>
+            <p class="text-2xl font-black text-slate-800 mt-1">{{ $stats['terjual'] }}</p>
+        </div>
+    @endif
 </div>
 
 <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">

@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LelangController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\UserController;
 
 // --- GUEST ROUTES (Bisa diakses tanpa login) ---
 Route::get('/', function () {
@@ -43,5 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/katalog/{id}', [KatalogController::class, 'detail'])->name('katalog.detail');
     Route::post('/katalog/{id}/bid', [KatalogController::class, 'bid'])->name('lelang.bid');
     Route::get('/my-history', [KatalogController::class, 'history'])->name('masyarakat.history');
+
+    Route::resource('user-management', UserController::class)->names('user');
+
+    Route::get('/masyarakat-management', [UserController::class, 'masyarakat'])->name('user.masyarakat');
 
 });

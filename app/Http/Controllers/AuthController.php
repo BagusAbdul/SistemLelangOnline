@@ -27,7 +27,7 @@ class AuthController extends Controller
             }
 
              if (Auth::user()->role_id == 2) {
-            return redirect()->route('DashboardPetugas');
+            return redirect()->route('DashboardAdmin');
             }
 
             if (Auth::user()->role_id == 3) {

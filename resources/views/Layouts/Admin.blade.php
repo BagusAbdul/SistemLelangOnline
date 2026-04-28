@@ -27,12 +27,24 @@
             </a>
 
             <div class="text-[10px] font-bold text-slate-500 uppercase px-3 mt-8 mb-2 tracking-[0.2em]">Master Data</div>
+            @if(Auth::user()->role_id == 1)
 
             <a href="{{ route('kategori.index') }}" class="flex items-center space-x-3 p-3 rounded-xl {{ Request::is('kategori*') ? 'bg-blue-600 text-white' : 'hover:bg-slate-800 text-slate-400' }}">
                 <i data-lucide="tag" class="w-5 h-5"></i>
                 <span class="font-medium text-sm">Kategori Barang</span>
             </a>
 
+            <a href="{{ route('user.index') }}" class="flex items-center space-x-3 p-3 rounded-xl {{ Request::is('user-management*') ? 'bg-blue-600 text-white' : 'hover:bg-slate-800 text-slate-400' }}">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span class="font-medium text-sm">Manajemen User</span>
+            </a>
+
+            <a href="{{ route('user.masyarakat') }}" class="flex items-center space-x-3 p-3 rounded-xl {{ Request::is('masyarakat-management*') ? 'bg-blue-600 text-white' : 'hover:bg-slate-800 text-slate-400' }}">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span class="font-medium text-sm">Manajemen Masyarakat</span>
+            </a>
+
+            @endif
             <a href="{{ route('barang.index') }}" class="flex items-center space-x-3 p-3 rounded-xl {{ Request::is('barang*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/40' : 'hover:bg-slate-800 text-slate-400' }} transition-all">
                 <i data-lucide="package" class="w-5 h-5"></i>
                 <span class="font-medium text-sm">Data Barang</span>

@@ -52,4 +52,16 @@ class User extends Authenticatable
     public function isPetugas() { return $this->role->nama_role === 'petugas'; }
     public function isMasyarakat() { return $this->role->nama_role === 'masyarakat'; }
 
+    // Relasi ke data lelang (jika user adalah petugas)
+public function lelangs()
+{
+    return $this->hasMany(Lelang::class, 'id_petugas');
+}
+
+// Relasi ke riwayat penawaran (jika user adalah masyarakat)
+public function histories()
+{
+    return $this->hasMany(HistoryLelang::class, 'id_user');
+}
+
 }
