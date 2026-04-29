@@ -35,7 +35,7 @@
         </div>
         <div class="mt-6 md:mt-0">
             <div class="flex flex-wrap gap-2">
-                <a href="{{ route('landing') }}"
+                <a href="{{ route('katalog') }}"
                 class="px-6 py-2 rounded-xl text-sm font-bold transition-all {{ !request('kategori') ? 'bg-orange-500 text-white shadow-lg' : 'bg-slate-100 text-slate-500 hover:bg-slate-200' }}">
                 Semua
                 </a>

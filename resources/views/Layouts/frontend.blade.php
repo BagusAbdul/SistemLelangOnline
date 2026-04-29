@@ -20,7 +20,7 @@
 
             <div class="hidden md:flex items-center space-x-8 text-sm font-bold tracking-wide text-slate-600">
                 <a href="{{ route('katalog') }}" class="hover:text-orange-500 transition-colors">Beranda</a>
-                <a href="#katalog" class="hover:text-orange-500 transition-colors">Katalog</a>
+                <a href="{{ route('katalog',"#katalog") }}" class="hover:text-orange-500 transition-colors">Katalog</a>
                 <a href="#" class="hover:text-orange-500 transition-colors">Tentang Kami</a>
             </div>
 
